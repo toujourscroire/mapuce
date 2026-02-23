@@ -515,9 +515,17 @@
 
     .videos-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      max-height: 75vh;
+      overflow-y: auto;
+      padding-right: 8px;
     }
+
+    /* Scrollbar pour la grille vidéos */
+    .videos-grid::-webkit-scrollbar { width: 6px; }
+    .videos-grid::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 3px; }
+    .videos-grid::-webkit-scrollbar-thumb { background: var(--rose); border-radius: 3px; }
 
     .video-item {
       border-radius: 14px;
@@ -529,8 +537,8 @@
     .video-item video {
       width: 100%;
       display: block;
-      max-height: 200px;
-      object-fit: cover;
+      max-height: 320px;
+      object-fit: contain;
       background: #1a1020;
     }
 
@@ -724,7 +732,7 @@
       </button>
 
       <button class="btn-videos" onclick="openVideos()">
-        🎬 Surprise
+        🎬 Nos vidéos
       </button>
     </div>
   </div>
@@ -735,7 +743,7 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <span>❤️</span> Je t'aime, aujourd'hui, demain, et tous les jours après . <span>❤️</span>
+  <span>❤️</span> Je t'aime, aujourd'hui, demain, et tous les jours après. <span>❤️</span>
 </footer>
 
 
@@ -770,7 +778,7 @@
   <div class="video-overlay-inner">
     <div class="video-overlay-card">
       <button class="overlay-close" onclick="closeOverlay('overlay-videos')" aria-label="Fermer">✕</button>
-      <h2>🎬 Les gens qui t’aiment.</h2>
+      <h2>🎬 Nos vidéos</h2>
       <div class="videos-grid" id="videos-grid"></div>
     </div>
   </div>
@@ -793,12 +801,20 @@ const START_DATE = new Date(2024, 9, 17); // → 17 octobre 2024 (modifier libre
 
 // ⬇️ LISTE DES VIDÉOS
 // type:"file"  → fichier local mp4 dans le même dossier (ex: video1.mp4)
+// Les vidéos peuvent faire plus d'1 minute sans problème
 const VIDEOS = [
-  { type: 'file', src: 'video1.mp4', label: 'Notre vidéo 1' },
-  { type: 'file', src: 'video2.mp4', label: 'Notre vidéo 2' },
-  { type: 'file', src: 'video3.mp4', label: 'Notre vidéo 3' },
-  { type: 'file', src: 'video4.mp4', label: 'Notre vidéo 4' },
-  { type: 'file', src: 'video5.mp4', label: 'Notre vidéo 5' },
+  { type: 'file', src: 'video1.mp4', label: 'Vidéo 1' },
+  { type: 'file', src: 'video2.mp4', label: 'Vidéo 2' },
+  { type: 'file', src: 'video3.mp4', label: 'Vidéo 3' },
+  { type: 'file', src: 'video4.mp4', label: 'Vidéo 4' },
+  { type: 'file', src: 'video5.mp4', label: 'Vidéo 5' },
+  { type: 'file', src: 'video6.mp4', label: 'Vidéo 6' },
+  { type: 'file', src: 'video7.mp4', label: 'Vidéo 7' },
+  { type: 'file', src: 'video8.mp4', label: 'Vidéo 8' },
+  { type: 'file', src: 'video9.mp4', label: 'Vidéo 9' },
+  { type: 'file', src: 'video10.mp4', label: 'Vidéo 10' },
+  { type: 'file', src: 'video11.mp4', label: 'Vidéo 11' },
+  { type: 'file', src: 'video12.mp4', label: 'Vidéo 12' },
 ];
 
 // Compteur fixé à 4 mois (pas de calcul automatique)
